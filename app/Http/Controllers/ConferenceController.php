@@ -42,6 +42,14 @@ class ConferenceController extends Controller
         //
     }
 
+    public function list()
+    {
+        $conferences = Conference::all();
+
+        return view('list', compact('conferences'));
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      */
