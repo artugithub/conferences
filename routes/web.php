@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\GuestListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +23,5 @@ Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('login.submit');
 
 Route::resource('conferences', ConferenceController::class);
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 Route::get('/conferences', [ConferenceController::class, 'list'])->name('list');

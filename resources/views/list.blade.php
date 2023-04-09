@@ -8,15 +8,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ml-auto">
                 @if(Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}"
+                        <a class="nav-link text-white" href="{{ route('logout') }}"
                            onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
+                            <input type="hidden" name="_method" value="GET">
                         </form>
                     </li>
                 @endif
@@ -59,4 +60,16 @@
             </div>
         @endif
     </div>
+@endsection
+
+@section('styles')
+    <style>
+        .nav-link {
+            color: white;
+        }
+
+        .navbar-nav.ml-auto .nav-link {
+            margin-right: 20px;
+        }
+    </style>
 @endsection
