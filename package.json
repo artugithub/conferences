@@ -1,12 +1,20 @@
 {
     "private": true,
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "npm run development",
+        "watch": "mix watch",
+        "development": "mix",
+        "production": "mix --production"
     },
     "devDependencies": {
+        "@popperjs/core": "^2.11.6",
         "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.2",
-        "vite": "^4.0.0"
+        "bootstrap": "^5.1.3",
+        "cross-env": "^7.0.3",
+        "laravel-mix": "^6.0.49",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.42.1",
+        "sass-loader": "^12.4.0"
     }
 }
+

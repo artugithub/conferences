@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ConferenceController;
+use App\Http\Controllers\AdminLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'App\Http\Controllers\ConferenceController@index');
+Route::get('/', [ConferenceController::class, 'index'])->name('home');
+
+Route::resource('conferences', ConferenceController::class);
+
+Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
+Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('login.submit');
+
