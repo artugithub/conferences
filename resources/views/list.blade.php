@@ -31,7 +31,7 @@
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $conference->title }}</h5>
+                            <h5 class="card-title">{{ $conference->name }}</h5>
                             <p class="card-text">{{ $conference->description }}</p>
                             <a href="{{ route('conferences.show', $conference->id) }}" class="btn btn-primary">View</a>
                             @if(Auth::check())
@@ -55,7 +55,14 @@
         @if(Auth::check())
             <div class="row mt-5">
                 <div class="col-md-12 text-right">
-                    <a href="{{ route('conferences.create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('create') }}" class="btn btn-primary">Create</a>
+                </div>
+            </div>
+        @endif
+        @if(!Auth::check())
+            <div class="row mt-5">
+                <div class="col-md-12 text-right">
+                    <a href="{{ route('home') }}" class="btn btn-primary">Home page</a>
                 </div>
             </div>
         @endif

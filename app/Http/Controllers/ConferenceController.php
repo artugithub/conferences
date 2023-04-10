@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\conference;
+use App\Models\Conference;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -23,7 +23,7 @@ class ConferenceController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -31,15 +31,33 @@ class ConferenceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'participant_number' => 'required|integer|min:1',
+            'country' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $conference = new Conference();
+        $conference->name = $request->input('name');
+        $conference->description = $request->input('description');
+        $conference->date = $request->input('date');
+        $conference->participant_number = $request->input('participant_number');
+        $conference->country = $request->input('country');
+        $conference->address = $request->input('address');
+        $conference->save();
+
+        return redirect()->route('conferences.show', $conference);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(conference $conference)
+    public function show(Conference $conference)
     {
-        //
+        return view('show', compact('conference'));
     }
 
     public function list()
@@ -53,24 +71,43 @@ class ConferenceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(conference $conference)
+    public function edit(Conference $conference)
     {
-        //
+        return view('edit', compact('conference'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, conference $conference)
+    public function update(Request $request, Conference $conference)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'participant_number' => 'required|integer|min:1',
+            'country' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+        ]);
+
+        $conference->name = $request->input('name');
+        $conference->description = $request->input('description');
+        $conference->date = $request->input('date');
+        $conference->participant_number = $request->input('participant_number');
+        $conference->country = $request->input('country');
+        $conference->address = $request->input('address');
+        $conference->save();
+
+        return redirect()->route('conferences.show', $conference);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(conference $conference)
+    public function destroy(Conference $conference)
     {
-        //
+        $conference->delete();
+
+        return redirect()->route('index');
     }
 }

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\AdminLoginController;
-use App\Http\Controllers\GuestListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\ConferenceController@index');
 Route::get('/', [ConferenceController::class, 'index'])->name('home');
 
 Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
@@ -25,3 +23,5 @@ Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('login
 Route::resource('conferences', ConferenceController::class);
 Route::get('/logout', [AdminLoginController::class, 'logout'])->name('logout');
 Route::get('/conferences', [ConferenceController::class, 'list'])->name('list');
+Route::get('/conferences/create', [ConferenceController::class, 'create'])->name('create');
+Route::get('/conferences/{conference}/show', [ConferenceController::class, 'show'])->name('conferences.show');

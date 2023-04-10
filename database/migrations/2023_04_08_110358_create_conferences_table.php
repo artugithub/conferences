@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->date('date');
-            $table->integer('participant number');
+            $table->integer('participant_number');
             $table->string('country');
             $table->string('address');
             $table->timestamps();

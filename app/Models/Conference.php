@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class conference extends Model
+class Conference extends Model
 {
     protected $guarded = ['id'];
-    protected $fillable = ['name','description','date','participant number','country','address'];
+    protected $fillable = ['name','description','date','participant_number','country','address'];
 }
