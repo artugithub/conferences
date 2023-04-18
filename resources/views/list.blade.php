@@ -55,7 +55,7 @@
         @if(Auth::check())
             <div class="row mt-5">
                 <div class="col-md-12 text-right">
-                    <a href="{{ route('create') }}" class="btn btn-primary">Create</a>
+                    <a href="{{ route('create') }}" class="btn btn-primary">Add</a>
                 </div>
             </div>
         @endif

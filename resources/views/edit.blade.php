@@ -38,7 +38,7 @@
                 <input type="text" name="address" class="form-control" id="address" value="{{ $conference->address }}" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection

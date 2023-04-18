@@ -108,6 +108,6 @@ class ConferenceController extends Controller
     {
         $conference->delete();
 
-        return redirect()->route('index');
+        return redirect()->route('list');
     }
 }
